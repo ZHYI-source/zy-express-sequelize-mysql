@@ -6,9 +6,7 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.title) {
-        res.status(400).send({
-            message: "Content can not be empty!"
-        });
+        res.sendResult({},400,"标题不能为空！")
         return;
     }
 
@@ -22,13 +20,10 @@ exports.create = (req, res) => {
     // Save Tutorial in the database
     Tutorial.create(tutorial)
         .then(data => {
-            res.send(data);
+            res.sendResult(data,200,"创建成功!")
         })
         .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the Tutorial."
-            });
+            res.sendResult(err,500, err.message || "Some error occurred while creating the Tutorial.")
         });
 };
 
@@ -39,28 +34,22 @@ exports.findAll = (req, res) => {
 
     Tutorial.findAll({ where: condition })
         .then(data => {
-            res.send(data);
+            res.sendResult(data,200,"查询成功!")
         })
         .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving tutorials."
-            });
+            res.sendResult('',500,err.message || "Some error occurred while retrieving tutorials.")
         });
 };
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
-
     Tutorial.findByPk(id)
         .then(data => {
-            res.send(data);
+            res.sendResult(data,200,"查询成功!")
         })
         .catch(err => {
-            res.status(500).send({
-                message: "Error retrieving Tutorial with id=" + id
-            });
+            res.sendResult('',500,"Error retrieving Tutorial with id=" + id)
         });
 };
 
