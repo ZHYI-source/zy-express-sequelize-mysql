@@ -1,7 +1,7 @@
 # zy-express-sequelize-mysql
 
 #### 介绍
-`express`配合`mysql`的`nodeORM`进行模型抽象快速`curd`
+`express` 配合 `mysql` 的 `nodeORM` 进行模型抽象快速 `curd`
 
 #### 技术栈
 - Node.js / express  /  Sequelize / Mysql
@@ -10,16 +10,10 @@
 
 #### 安装教程
 
-1. ```js
+ ```js
    npm i
-   ```
-
-   
-
-2. ```js
    nodemon index.js
    ```
-
    
 
 #### 使用说明
