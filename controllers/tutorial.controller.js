@@ -43,7 +43,6 @@ exports.findAll = (req, res) => {
     //     "offset" : "偏移",
     //     "order":[["id","desc"]]
     // }
-    // console.log("映射路径",modelsPath)
     let condition = title ? {title: {[Op.like]: `%${title}%`}} : null;
     let order = [["id", "desc"]]
     let count = 0
@@ -55,7 +54,6 @@ exports.findAll = (req, res) => {
 
     // //查询数据条数
     Tutorial.findAndCountAll(query).then(data => {
-        console.log("1233", data.count)
         count = data.count
     })
     Tutorial.findAll({where: condition, order})
