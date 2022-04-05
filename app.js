@@ -10,7 +10,9 @@ dotenv.config()
 //处理请求参数解析
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
+const db = require("./models");
 
+db.sequelize.sync();
 // 设置跨域和相应数据格式
 app.all('/api/*', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*')
