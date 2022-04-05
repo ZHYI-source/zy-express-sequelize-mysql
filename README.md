@@ -12,7 +12,7 @@
 
  ```js
    npm i
-   nodemon index.js
+   nodemon app.js
    ```
    
 
