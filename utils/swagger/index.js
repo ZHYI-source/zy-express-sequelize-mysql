@@ -13,7 +13,7 @@ const options = {
         }
     },
     // 去哪个路由下收集 swagger 注释
-    // apis: [path.join(__dirname,'../../api/*.js')]
+    // apis: [path.join(__dirname,'../../routes/api/private/*.js')]
     apis: [path.join(__dirname,'../../routes/api/openapi.yaml')]
 }
 
