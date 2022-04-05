@@ -41,7 +41,8 @@ app.use(function (req, res, next) {
     res.sendResult(null, 404, 'Not Found')
 })
 app.listen(process.env.DEV_PORT, () => {
-    console.log(chalk.bold.green(`启动成功: ${process.env.DEV_URL}:${process.env.DEV_PORT}`));
+    console.log(chalk.bold.green(`项目启动成功: ${process.env.DEV_URL}:${process.env.DEV_PORT}`));
+    console.log(chalk.bold.green(`接口文档地址: ${process.env.DEV_URL}:${process.env.DEV_PORT}/apiDoc/#/`));
 
 })
 
