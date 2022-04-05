@@ -1,5 +1,5 @@
 //各种通用工具类
-let {md5} = require("./crypto");
+let {md5} = require("./utils.crypto");
 //时间格式化
 Date.prototype.Format = function (fmt) { //author: meizz
     var o = {
@@ -17,7 +17,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
-const tools = {
+const utilsTools = {
     //生成永不重复的id
     createRandomId: () => {
         return md5(
@@ -37,4 +37,4 @@ const tools = {
 
 }
 
-module.exports = tools
+module.exports = utilsTools
