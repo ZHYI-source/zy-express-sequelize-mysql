@@ -2,12 +2,14 @@ const db = require("../models");
 const logger = require("../utils/utils.logger").logger();
 const Tutorial = db.tutorials;
 const Op = db.Sequelize.Op;
+const path = require('path')
+const fs = require('fs')
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.title) {
-        res.sendResult({},400,"标题不能为空！")
+        res.sendResult({}, 400, "标题不能为空！")
         return;
     }
 
@@ -22,25 +24,47 @@ exports.create = (req, res) => {
     Tutorial.create(tutorial)
         .then(data => {
             logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(req.body)}; 响应："创建成功!"`);
-            res.sendResult(data,200,"创建成功!")
+            res.sendResult(data, 200, "创建成功!")
         })
         .catch(err => {
-            res.sendResult(err,500, err.message || "Some error occurred while creating the Tutorial.")
+            res.sendResult(err, 500, err.message || "Some error occurred while creating the Tutorial.")
         });
 };
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
     const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
-    Tutorial.findAll({ where: condition })
+    // let conditions={
+    //     "columns" : {},
+    //     "omit" : ["字段"],
+    //     "only" : ["需要字段"],
+    //     "limit" : "",
+    //     "offset" : "偏移",
+    //     "order":[["id","desc"]]
+    // }
+    // console.log("映射路径",modelsPath)
+    let condition = title ? {title: {[Op.like]: `%${title}%`}} : null;
+    let order = [["id", "desc"]]
+    // let query = {
+    //     order,
+    //     limit: 3,
+    //     offset: 1,
+    // }
+    //
+    // //查询数据条数
+    // Tutorial.findAndCountAll(query).then(data => {
+    //     console.log("1233", data.count)
+    //     // res.sendResult({count: data.count}, 200, "查询成功!")
+    // })
+
+    Tutorial.findAll({where: condition, order})
         .then(data => {
             logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(req.query)}; 响应：${JSON.stringify(data)}`);
-            res.sendResult(data,200,"查询成功!")
+            res.sendResult(data, 200, "查询成功!")
         })
         .catch(err => {
-            res.sendResult('',500,err.message || "Some error occurred while retrieving tutorials.")
+            res.sendResult('', 500, err.message || "Some error occurred while retrieving tutorials.")
         });
 };
 
@@ -49,10 +73,10 @@ exports.findOne = (req, res) => {
     const id = req.params.id;
     Tutorial.findByPk(id)
         .then(data => {
-            res.sendResult(data,200,"查询成功!")
+            res.sendResult(data, 200, "查询成功!")
         })
         .catch(err => {
-            res.sendResult('',500,"Error retrieving Tutorial with id=" + id)
+            res.sendResult('', 500, "Error retrieving Tutorial with id=" + id)
         });
 };
 
@@ -61,7 +85,7 @@ exports.update = (req, res) => {
     const id = req.params.id;
 
     Tutorial.update(req.body, {
-        where: { id: id }
+        where: {id: id}
     })
         .then(num => {
             if (num == 1) {
@@ -86,7 +110,7 @@ exports.delete = (req, res) => {
     const id = req.params.id;
 
     Tutorial.destroy({
-        where: { id: id }
+        where: {id: id}
     })
         .then(num => {
             if (num == 1) {
@@ -113,7 +137,7 @@ exports.deleteAll = (req, res) => {
         truncate: false
     })
         .then(nums => {
-            res.send({ message: `${nums} Tutorials were deleted successfully!` });
+            res.send({message: `${nums} Tutorials were deleted successfully!`});
         })
         .catch(err => {
             res.status(500).send({
@@ -125,7 +149,7 @@ exports.deleteAll = (req, res) => {
 
 // find all published Tutorial
 exports.findAllPublished = (req, res) => {
-    Tutorial.findAll({ where: { published: true } })
+    Tutorial.findAll({where: {published: true}})
         .then(data => {
             res.send(data);
         })
