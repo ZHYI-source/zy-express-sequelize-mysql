@@ -1,4 +1,5 @@
 const db = require("../models");
+const logger = require("../utils/utils.logger").logger();
 const Tutorial = db.tutorials;
 const Op = db.Sequelize.Op;
 
@@ -20,6 +21,7 @@ exports.create = (req, res) => {
     // Save Tutorial in the database
     Tutorial.create(tutorial)
         .then(data => {
+            logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(req.body)}; 响应："创建成功!"`);
             res.sendResult(data,200,"创建成功!")
         })
         .catch(err => {
@@ -34,6 +36,7 @@ exports.findAll = (req, res) => {
 
     Tutorial.findAll({ where: condition })
         .then(data => {
+            logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(req.query)}; 响应：${JSON.stringify(data)}`);
             res.sendResult(data,200,"查询成功!")
         })
         .catch(err => {

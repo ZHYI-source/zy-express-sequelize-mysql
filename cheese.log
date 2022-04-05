@@ -1,7 +1,0 @@
-[2022-04-05T15:22:44.916] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:23:12.025] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:23:58.819] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:34:49.005] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:36:35.076] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T16:30:19.277] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T16:47:37.147] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
