@@ -46,22 +46,22 @@ exports.findAll = (req, res) => {
     // console.log("映射路径",modelsPath)
     let condition = title ? {title: {[Op.like]: `%${title}%`}} : null;
     let order = [["id", "desc"]]
-    // let query = {
-    //     order,
-    //     limit: 3,
-    //     offset: 1,
-    // }
-    //
-    // //查询数据条数
-    // Tutorial.findAndCountAll(query).then(data => {
-    //     console.log("1233", data.count)
-    //     // res.sendResult({count: data.count}, 200, "查询成功!")
-    // })
+    let count = 0
+    let query = {
+        order,
+        limit: 3,
+        offset: 1,
+    }
 
+    // //查询数据条数
+    Tutorial.findAndCountAll(query).then(data => {
+        console.log("1233", data.count)
+        count = data.count
+    })
     Tutorial.findAll({where: condition, order})
         .then(data => {
             logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(req.query)}; 响应：${JSON.stringify(data)}`);
-            res.sendResult(data, 200, "查询成功!")
+            res.sendResult({data, count}, 200, "查询成功!")
         })
         .catch(err => {
             res.sendResult('', 500, err.message || "Some error occurred while retrieving tutorials.")
