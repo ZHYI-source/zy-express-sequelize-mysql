@@ -3,10 +3,9 @@ const bodyParser = require('body-parser')
 const path = require('path')
 // 路由加载
 const mount = require('mount-routes')
-const logger = require("./utils/utils.logger").logger();
 const app = express()
-const port = 3001
-
+const dotenv = require('dotenv')
+dotenv.config()
 //处理请求参数解析
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -37,6 +36,8 @@ mount(app, path.join(process.cwd(), '/routes'), true)
 app.use(function (req, res, next) {
     res.sendResult(null, 404, 'Not Found')
 })
-app.listen(port, () => {
-    console.log(` http://localhost:${port}`)
+app.listen(process.env.DEV_PORT, () => {
+    console.log(`启动成功: ${process.env.DEV_URL}:${process.env.DEV_PORT}`)
 })
+
+module.exports = app
