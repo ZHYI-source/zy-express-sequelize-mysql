@@ -4,7 +4,11 @@
   "description": "express配合mysql的nodeORM进行模型抽象快速curd",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.17.3"
+    "body-parser": "^1.20.0",
+    "crypto-js": "^4.1.1",
+    "express": "^4.17.3",
+    "log4js": "^6.4.4",
+    "mount-routes": "^1.0.8"
   },
   "devDependencies": {},
   "scripts": {
