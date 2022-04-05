@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
+const chalk = require('chalk'); // https://www.npmjs.com/package/chalk
 // 路由加载
 const mount = require('mount-routes')
 const app = express()
@@ -23,6 +24,9 @@ app.all('/api/*', function (req, res, next) {
     else next()
 
 })
+// 使用swagger API 文档
+const swaggerInstall = require('./utils/swagger')
+swaggerInstall(app)
 
 // 统一响应机制
 const UnifiedResponse = require('./utils/utils.resextra')
@@ -37,7 +41,8 @@ app.use(function (req, res, next) {
     res.sendResult(null, 404, 'Not Found')
 })
 app.listen(process.env.DEV_PORT, () => {
-    console.log(`启动成功: ${process.env.DEV_URL}:${process.env.DEV_PORT}`)
+    console.log(chalk.bold.green(`启动成功: ${process.env.DEV_URL}:${process.env.DEV_PORT}`));
+
 })
 
 module.exports = app

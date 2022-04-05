@@ -1,21 +1,5 @@
-[2022-04-05T14:36:58.539] [DEBUG] cheese - GET /api/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T14:41:23.891] [DEBUG] cheese - GET /api/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T14:46:33.102] [DEBUG] cheese - GET /api/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T14:46:54.088] [DEBUG] cheese - GET /api/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T14:54:53.323] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T14:56:04.215] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T14:56:10.488] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T14:57:16.175] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:06:33.211] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:12:44.641] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:18:41.150] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:19:46.770] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:20:05.247] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:20:25.645] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:20:44.142] [DEBUG] cheese - 3001
-[2022-04-05T15:20:44.143] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:21:08.233] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:21:55.757] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:21:56.970] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:21:57.796] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
-[2022-04-05T15:21:59.034] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
+[2022-04-05T15:22:44.916] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
+[2022-04-05T15:23:12.025] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
+[2022-04-05T15:23:58.819] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
+[2022-04-05T15:34:49.005] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}
+[2022-04-05T15:36:35.076] [DEBUG] cheese - GET /api/private/users/list *** 参数：{}; 响应：{"name":"小明"}

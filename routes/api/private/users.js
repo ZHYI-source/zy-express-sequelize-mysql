@@ -3,6 +3,14 @@ const router = express.Router();
 const path = require("path");
 const logger = require("../../../utils/utils.logger").logger();
 
+/**
+ * Solves equations of the form a * x = b
+ * @example &lt;caption>Example usage of method1.&lt;/caption>
+ * // returns 2
+ * globalNS.method1(5, 10);
+ * @returns {Number} Returns the value of x for the equation.
+ */
+
 router.get('/list',
     // 验证参数֤
     (req, res, next) => {
@@ -11,7 +19,8 @@ router.get('/list',
     },
     // 逻辑处理
     (req, res, next) => {
-        console.log(process.env.DEV_PORT)
+
+
         logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(req.query)}; 响应：${JSON.stringify({name: '小明'})}`);
         res.sendResult(`${Number(process.env.DEV_PORT)}`,200,'success')
     }
