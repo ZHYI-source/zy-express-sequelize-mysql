@@ -35,7 +35,7 @@ const UnifiedResponse = require('./utils/utils.resextra')
 app.use(UnifiedResponse)
 
 // 带路径的用法并且可以打印出路有表  true 代表展示路由表在打印台
-mount(app, path.join(process.cwd(), '/routes'), false)
+mount(app, path.join(process.cwd(), '/routes'), true)
 
 
 // 处理无响应 如果没有路径处理就返回 Not Found
