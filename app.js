@@ -43,6 +43,7 @@ app.use(UnifiedResponse)
 // 带路径的用法并且可以打印出路有表  true 代表展示路由表在打印台
 mount(app, path.join(process.cwd(), '/routes'), true)
 
+//token 有效性中间件
 app.use(function (err, req, res, next) {
     if (err.name === 'UnauthorizedError') {
         res.sendResult({data:null, code:401, message:'token已失效'})
