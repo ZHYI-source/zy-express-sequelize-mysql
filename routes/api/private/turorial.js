@@ -18,10 +18,10 @@ router.get("/published", tutorials.findAllPublished);
 router.get("/:id", tutorials.findOne);
 
 // Update a Tutorial with id
-router.put("/:id", tutorials.update);
+router.post("/update", tutorials.update);
 
 // Delete a Tutorial with id
-router.delete("/:id", tutorials.delete);
+router.post("/delete", tutorials.delete);
 
 // Delete all Tutorials
 router.delete("/", tutorials.deleteAll);

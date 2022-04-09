@@ -22,7 +22,12 @@ function queryConditions(conditions) {
 }
 
 const sqlOpt = {
-    //查询数据总条数
+    /**
+     * 查询数据总条数
+     * @param  {Object}   model       模型实例
+     * @param  {Object}   conditions  条件集合
+     * @param  {Function} cb          回调函数
+     */
     count: (model, conditions, cb) => {
         if (!model) return cb(resExtra('', 500, '模型不存在'));
         model.findAndCountAll(queryConditions(conditions)).then(data => {
@@ -32,7 +37,13 @@ const sqlOpt = {
             cb(resExtra('', 500, '查询条数失败'))
         })
     },
-    //查询所有数据
+
+    /**
+     * 查询所有数据
+     * @param  {Object}   model       模型实例
+     * @param  {Object}   conditions  条件集合
+     * @param  {Function} cb          回调函数
+     */
     list: (model, conditions, cb) => {
         /*查询条件格式
         conditions = {
@@ -60,23 +71,85 @@ const sqlOpt = {
         })
 
     },
-    //查询单条数据 查询第一个条目的数据
+
+    /**
+     * 更具主键 获取一条数据
+     * @param  {Object}   model       模型实例
+     * @param  {Object}   conditions  条件集合
+     * @param  {Function} cb          回调函数
+     */
     findOne: (model, conditions, cb) => {
         if (!model) return cb(resExtra('', 500, '模型不存在'));
-        /* 查询一条数据 参数格式
+        /* 根据主键查询一条数据 参数
         conditions:{
-             params: {
-                 title: ''
-             }
+             id:'123'
          }*/
-        if (!conditions.params) return cb(resExtra('', 500, '查询条件为空！'));
-        model.findOne(queryConditions(conditions)).then(data => {
+        if (!conditions.id) return cb(resExtra('', 500, '查询条件为空！'));
+        model.findByPk(conditions.id).then(data => {
             cb(resExtra(data))
         }).catch(err => {
             logger.error(JSON.stringify(err))
             cb(resExtra('', 500, '查询失败'))
         })
-    }
+    },
 
+    /**
+     * 创建数据
+     * @param  {Object}   model       模型实例
+     * @param  {Object}   obj   数据集合
+     * @param  {Function} cb          回调函数
+     */
+    create: (model, obj, cb) => {
+        // obj = {
+            // 模型属性1：前端参数1
+            // title:params.title
+        // }
+        model.create(obj).then(data => {
+            cb(resExtra(data,200,'创建成功！'))
+        }).catch(err=>{
+            logger.error(JSON.stringify(err))
+            cb(resExtra('', 500, '创建失败!'))
+        })
+    },
+
+    /**
+     * 更新数据
+     * @param  {Object}   model       模型实例
+     * @param  {Object}   obj   数据集合
+     * @param  {Object}   key      更新条件
+     * @param  {Function} cb          回调函数
+     */
+    update:(model,obj,key,cb)=>{
+        /*key={
+            id:body.id
+        }*/
+        model.update(obj,{where:key}).then(data => {
+            if (data[0]){
+                cb(resExtra(data,200,'更新成功！'))
+            }else {
+                cb(resExtra('', 500, 'ID不存在！'))
+            }
+        }).catch(err=>{
+            logger.error(JSON.stringify(err))
+            cb(resExtra('', 500, '更新失败!'))
+        })
+    },
+
+    delete:(model,key,cb)=>{
+        /*key={
+            id:body.id
+        }*/
+        model.destroy({where:key}).then(data => {
+            console.log(data)
+            if (data){
+                cb(resExtra(data,200,'删除成功！'))
+            }else {
+                cb(resExtra('', 500, 'ID不存在！'))
+            }
+        }).catch(err=>{
+            logger.error(JSON.stringify(err))
+            cb(resExtra('', 500, '删除失败!'))
+        })
+    }
 }
 module.exports = sqlOpt
