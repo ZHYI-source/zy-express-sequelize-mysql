@@ -63,19 +63,16 @@ exports.delete = (req, res) => {
 
 // Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {
-    Tutorial.destroy({
-        where: {},
-        truncate: false
+    DAO.deleteAll(Tutorial,data=>{
+        res.sendResult(data)
     })
-        .then(nums => {
-            res.send({message: `${nums} Tutorials were deleted successfully!`});
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while removing all tutorials."
-            });
-        });
+};
+// Delete all Tutorials from the database.
+exports.query = (req, res) => {
+    let sql = 'SELECT * FROM `tutorials`'
+    DAO.doQuery(sql,data=>{
+        res.sendResult(data)
+    })
 };
 
 // find all published Tutorial

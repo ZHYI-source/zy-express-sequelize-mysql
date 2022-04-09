@@ -4,6 +4,7 @@
  *@Description:公共查询方法
  */
 const utilsTools = require("../utils/utils.tools");
+const db = require("../models/index");
 const logger = require("../utils/utils.logger").logger();
 
 //整理统一返回格式
@@ -96,7 +97,7 @@ const sqlOpt = {
     /**
      * 创建数据
      * @param  {Object}   model       模型实例
-     * @param  {Object}   obj   数据集合
+     * @param  {Object}   obj         数据集合
      * @param  {Function} cb          回调函数
      */
     create: (model, obj, cb) => {
@@ -115,8 +116,8 @@ const sqlOpt = {
     /**
      * 更新数据
      * @param  {Object}   model       模型实例
-     * @param  {Object}   obj   数据集合
-     * @param  {Object}   key      更新条件
+     * @param  {Object}   obj         数据集合
+     * @param  {Object}   key         更新条件
      * @param  {Function} cb          回调函数
      */
     update:(model,obj,key,cb)=>{
@@ -134,7 +135,12 @@ const sqlOpt = {
             cb(resExtra('', 500, '更新失败!'))
         })
     },
-
+    /**
+     * 删除某条数据
+     * @param  {Object}   model       模型实例
+     * @param  {Object}   key         删除条件
+     * @param  {Function} cb          回调函数
+     */
     delete:(model,key,cb)=>{
         /*key={
             id:body.id
@@ -150,6 +156,41 @@ const sqlOpt = {
             logger.error(JSON.stringify(err))
             cb(resExtra('', 500, '删除失败!'))
         })
-    }
+    },
+
+    /**
+     * 删除整个表数据
+     * @param  {Object}   model       模型实例
+     * @param  {Function} cb          回调函数
+     */
+    deleteAll:(model,cb)=>{
+        model.destroy({where:{},truncate: false}).then(data => {
+            console.log(data)
+            if (!data){
+                cb(resExtra(data,200,'全部删除成功！'))
+            }else {
+                cb(resExtra('', 500, '删除失败！'))
+            }
+        }).catch(err=>{
+            logger.error(JSON.stringify(err))
+            cb(resExtra('', 500, '删除失败!'))
+        })
+    },
+
+    /**
+     * 原始查询
+     * @param  {String} sql           原始sql语句
+     * @param  {Function} cb          回调函数
+     */
+    doQuery:(sql,cb)=>{
+        // sql = 'SELECT * FROM `tutorials`'
+        db.sequelize.query(sql).then(data => {
+            cb(resExtra(data,200,'查询成功！'))
+        }).catch(err=>{
+            logger.error(JSON.stringify(err))
+            cb(resExtra('', 500, '查询失败!'))
+        })
+    },
+
 }
 module.exports = sqlOpt

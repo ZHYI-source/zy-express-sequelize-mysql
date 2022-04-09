@@ -24,6 +24,8 @@ router.post("/update", tutorials.update);
 router.post("/delete", tutorials.delete);
 
 // Delete all Tutorials
-router.delete("/", tutorials.deleteAll);
+router.post("/deleteAll", tutorials.deleteAll);
+// Delete all Tutorials
+router.post("/query", tutorials.query);
 
 module.exports = router;

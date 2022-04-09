@@ -17,8 +17,9 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 
 const db = {};
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+db.Sequelize = Sequelize;//引入
+
+db.sequelize = sequelize;//实例
 
 // 获取映射文件路径
 let modelsPath = path.join(process.cwd(),"/models");
