@@ -13,8 +13,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         verificationCode: {
             type: Sequelize.INTEGER
-        }
-
+        },
     });
 
     return Users;
