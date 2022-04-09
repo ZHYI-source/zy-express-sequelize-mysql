@@ -35,7 +35,7 @@ const sqlOpt = {
             cb(resExtra(data.count))
         }).catch(err => {
             logger.error(JSON.stringify(err))
-            cb(resExtra('', 500, '查询条数失败'))
+            cb(resExtra(err, 500, '查询条数失败'))
         })
     },
 
@@ -65,10 +65,10 @@ const sqlOpt = {
                 cb(resExtra({data, count: countAll.count}))
             }).catch(err => {
                 logger.error(JSON.stringify(err))
-                cb(resExtra('', 500, '查询失败'))
+                cb(resExtra(err, 500, '查询失败'))
             })
         }).catch(err => {
-            cb(resExtra('', 500, '查询失败'))
+            cb(resExtra(err, 500, '查询失败'))
         })
 
     },
@@ -90,7 +90,7 @@ const sqlOpt = {
             cb(resExtra(data))
         }).catch(err => {
             logger.error(JSON.stringify(err))
-            cb(resExtra('', 500, '查询失败'))
+            cb(resExtra(err, 500, '查询失败'))
         })
     },
 
@@ -109,7 +109,7 @@ const sqlOpt = {
             cb(resExtra(data,200,'创建成功！'))
         }).catch(err=>{
             logger.error(JSON.stringify(err))
-            cb(resExtra('', 500, '创建失败!'))
+            cb(resExtra(err, 500, '创建失败!'))
         })
     },
 
