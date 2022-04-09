@@ -66,7 +66,8 @@ exports.deleteAll = (req, res) => {
         res.sendResult(data)
     })
 };
-// Delete all Tutorials from the database.
+
+// Delete Tutorials from the database.
 exports.query = (req, res) => {
     let sql = 'SELECT * FROM `tutorials`'
     DAO.doQuery(sql,data=>{
