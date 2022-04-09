@@ -25,7 +25,7 @@ const options = {
         }
     },
     route: {
-        url: '/swagger',
+        url: '/swagger',//打开swagger文档页面地址
         docs: '/swagger.json' //swagger文件 api
     },
     basedir: __dirname, //app absolute path
