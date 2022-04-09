@@ -135,6 +135,7 @@ const sqlOpt = {
             cb(resExtra('', 500, '更新失败!'))
         })
     },
+
     /**
      * 删除某条数据
      * @param  {Object}   model       模型实例
@@ -193,4 +194,5 @@ const sqlOpt = {
     },
 
 }
+
 module.exports = sqlOpt

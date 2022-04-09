@@ -1,6 +1,5 @@
 const db = require("../models");
 const logger = require("../utils/utils.logger").logger();
-const utilsTools = require("../utils/utils.tools");
 const DAO = require("../dao/DAO");
 const Tutorial = db.tutorials;
 const Op = db.Sequelize.Op;
