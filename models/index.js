@@ -22,10 +22,10 @@ db.Sequelize = Sequelize;//引入
 db.sequelize = sequelize;//实例
 
 // 获取映射文件路径
-let modelsPath = path.join(process.cwd(),"/models");
-console.log("ok",modelsPath)
+// let modelsPath = path.join(process.cwd(),"/models");
+// console.log("ok",modelsPath)
 
-db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
+db.users = require("./users.model.js")(sequelize, Sequelize);
 
 
 module.exports = db;
