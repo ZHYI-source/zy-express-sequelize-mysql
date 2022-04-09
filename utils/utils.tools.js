@@ -32,9 +32,18 @@ const utilsTools = {
     getDate:()=>{
        return new Date().Format("yyyy-MM-dd hh:mm:ss")
     },
-
-
+    //对象参数为空就删除该属性
+    deleteNullObj:(keywords)=>{
+        if (!keywords){
+            return  keywords
+        }
+        for(let key in keywords) {
+            if(keywords[key] === '') {
+                delete keywords[key]
+            }
+        }
+        return keywords
+    }
 
 }
-
 module.exports = utilsTools

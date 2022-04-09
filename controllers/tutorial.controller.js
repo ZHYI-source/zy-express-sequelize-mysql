@@ -1,5 +1,7 @@
 const db = require("../models");
 const logger = require("../utils/utils.logger").logger();
+const utilsTools = require("../utils/utils.tools");
+const DAO = require("../dao/DAO");
 const Tutorial = db.tutorials;
 const Op = db.Sequelize.Op;
 const path = require('path')
@@ -33,37 +35,23 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-    const title = req.query.title;
-
-    // let conditions={
-    //     "columns" : {},
-    //     "omit" : ["字段"],
-    //     "only" : ["需要字段"],
-    //     "limit" : "",
-    //     "offset" : "偏移",
-    //     "order":[["id","desc"]]
-    // }
-    let condition = title ? {title: {[Op.like]: `%${title}%`}} : null;
-    let order = [["id", "desc"]]
-    let count = 0
-    let query = {
-        order,
-        limit: 3,
-        offset: 1,
-    }
-
-    // //查询数据条数
-    Tutorial.findAndCountAll(query).then(data => {
-        count = data.count
+    const pm = req.body;
+    DAO.list(Tutorial,pm,list=>{
+        logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(pm)}; 响应：${JSON.stringify(list)}`);
+        res.sendResult(list)
     })
-    Tutorial.findAll({where: condition, order})
-        .then(data => {
-            logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(req.query)}; 响应：${JSON.stringify(data)}`);
-            res.sendResult({data, count}, 200, "查询成功!")
-        })
-        .catch(err => {
-            res.sendResult('', 500, err.message || "Some error occurred while retrieving tutorials.")
-        });
+    //查询数据条数
+    // Tutorial.findAndCountAll(conditions).then(data => {
+    //     count = data.count
+    // })
+    // Tutorial.findAll(conditions)
+    //     .then(data => {
+    //         logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(req.body)}; 响应：${JSON.stringify(data)}`);
+    //         res.sendResult({data, count}, 200, "查询成功!")
+    //     })
+    //     .catch(err => {
+    //         res.sendResult('', 500, err.message || "Some error occurred while retrieving tutorials.")
+    //     });
 };
 
 // Find a single Tutorial with an id

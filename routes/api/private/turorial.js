@@ -7,7 +7,9 @@ const tutorials = require("../../../controllers/tutorial.controller.js");
 router.post("/", tutorials.create);
 
 // Retrieve all Tutorials
-router.get("/", tutorials.findAll);
+router.get("/list", tutorials.findAll);
+
+router.post("/list", tutorials.findAll);
 
 // Retrieve all published Tutorials
 router.get("/published", tutorials.findAllPublished);
