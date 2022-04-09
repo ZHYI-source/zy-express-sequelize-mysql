@@ -5,10 +5,13 @@ const {aes} = require('../utils/utils.crypto')
 module.exports = (sequelize, Sequelize) => {
     const Users = sequelize.define("users", {
         username: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            notNull: true,
+            notEmpty: true,
         },
         password: {
             type: Sequelize.STRING,
+            notEmpty: true,
             set(value) {
                 // 在数据库中以明文形式存储密码是很糟糕的.
                 // 使用适当的aes对称加密更好.
