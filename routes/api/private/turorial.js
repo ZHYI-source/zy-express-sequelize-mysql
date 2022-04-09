@@ -3,13 +3,7 @@ const router = express.Router();
 const path = require("path");
 const logger = require("../../../utils/utils.logger").logger();
 const tutorials = require("../../../controllers/tutorial.controller.js");
-// Create a new Tutorial
-router.post("/", tutorials.create);
 
-// Retrieve all Tutorials
-router.get("/list", tutorials.findAll);
-
-router.post("/list", tutorials.findAll);
 /**
  * 用户信息注册
  * @route POST /api/private/turorial/register
@@ -18,14 +12,15 @@ router.post("/list", tutorials.findAll);
  * @param {number} password.query.required - 请输入密码
  * @param {string} email.query.required - 请输入合法邮箱
  * @returns {object} 200 - An array of user info
+ * @returns {object} 500 - 请求失败
  * @returns {Error}  default - Unexpected error
  */
-// Retrieve all published Tutorials
-router.post("/register", tutorials.findAllPublished);
+router.post("/create", tutorials.create);
 
-// Retrieve a single Tutorial with id
-router.get("/:id", tutorials.findOne);
+// Retrieve all Tutorials
+router.get("/list", tutorials.findAll);
 
+router.post("/list", tutorials.findAll);
 // Update a Tutorial with id
 router.post("/update", tutorials.update);
 

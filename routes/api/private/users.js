@@ -12,7 +12,9 @@ router.get('/list',
     // 逻辑处理
     (req, res, next) => {
         logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(req.query)}; 响应：${JSON.stringify({name: '小明'})}`);
-        res.sendResult(`${Number(process.env.DEV_PORT)}`,200,'success')
+        res.sendResult({
+            data: `${Number(process.env.DEV_PORT)}`, code: 200, message: 'success'
+        })
     }
 )
 module.exports = router;

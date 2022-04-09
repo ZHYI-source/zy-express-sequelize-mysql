@@ -11,7 +11,7 @@ const options = {
             version: '1.0.0',
             description: `书中枫叶’接口api`
         },
-        host: `${process.env.DEV_URL}:${process.env.DEV_PORT}`,
+        host: `${process.env.SWEG_URL}:${process.env.DEV_PORT}`,
         basePath: '/',
         produces: ['application/json', 'application/xml'],
         schemes: ['http', 'https'],
@@ -29,7 +29,10 @@ const options = {
         docs: '/swagger.json' //swagger文件 api
     },
     basedir: __dirname, //app absolute path
-    files: ['../../routes/api/private/*.js'] //在那个文件夹下面收集注释
+
+    files: [  //在那个文件夹下面收集注释
+        '../../routes/api/**/*.js',
+    ]
 }
 
 module.exports = options

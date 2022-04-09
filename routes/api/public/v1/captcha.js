@@ -2,8 +2,14 @@ let express = require('express');
 let router = express.Router();
 let svgCaptcha = require('svg-captcha');
 let {aes} = require('../../../../utils/utils.crypto');
-
-// 获取验证码
+/**
+ * 获取验证码
+ * @route GET /api/public/v1/captcha
+ * @group 验证码 - Operations about captcha
+ * @returns {object} 200 - svg格式验证码
+ * @returns {object} 500 - 获取验证码错误
+ * @returns {Error}  default - Unexpected error
+ */
 router.get("/",
     async (req, res, next) => {
         try {

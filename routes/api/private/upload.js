@@ -10,7 +10,15 @@ let upload = multer({dest: 'uploads_files'});
 
 let baseURL = require('../../../config/upload.config').baseURL;
 
-// 提供文件上传服务
+/**
+ * 提供文件上传服务
+ * @route POST /api/private/upload
+ * @group 文件上传 - 上传图片接口
+ * @param {file} file.query.required - 图片
+ * @returns {object} 200 - 返回结果对象：文件地址 url，暂存地址 tmp_path
+ * @returns {object} 500 - 请求失败
+ * @returns {Error}  default - Unexpected error
+ */
 router.post("/", upload.single('file'), function (req, res, next) {
     let fileExtArray = req.file.originalname.split(".");
     let ext = fileExtArray[fileExtArray.length - 1];

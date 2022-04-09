@@ -5,8 +5,11 @@ const chalk = require('chalk'); // https://www.npmjs.com/package/chalk
 // 路由加载
 const mount = require('mount-routes')
 const app = express()
+
+//访问 .env文件
 const dotenv = require('dotenv')
 dotenv.config()
+
 //处理请求参数解析
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -28,6 +31,7 @@ app.all('/api/*', function (req, res, next) {
 })
 
 // 使用swagger API 文档
+// https://www.npmjs.com/package/express-swagger-generator
 const expressSwagger = require('express-swagger-generator')(app)
 const options = require('./utils/swagger') //配置信息
 expressSwagger(options)
