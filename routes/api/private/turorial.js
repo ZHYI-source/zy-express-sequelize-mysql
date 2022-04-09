@@ -10,9 +10,18 @@ router.post("/", tutorials.create);
 router.get("/list", tutorials.findAll);
 
 router.post("/list", tutorials.findAll);
-
+/**
+ * 用户信息注册
+ * @route POST /api/private/turorial/register
+ * @group user - Operations about user
+ * @param {string} username.query.required - 请输入用户名
+ * @param {number} password.query.required - 请输入密码
+ * @param {string} email.query.required - 请输入合法邮箱
+ * @returns {object} 200 - An array of user info
+ * @returns {Error}  default - Unexpected error
+ */
 // Retrieve all published Tutorials
-router.get("/published", tutorials.findAllPublished);
+router.post("/register", tutorials.findAllPublished);
 
 // Retrieve a single Tutorial with id
 router.get("/:id", tutorials.findOne);

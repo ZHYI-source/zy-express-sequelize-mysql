@@ -26,9 +26,11 @@ app.all('/api/*', function (req, res, next) {
     else next()
 
 })
+
 // 使用swagger API 文档
-const swaggerInstall = require('./utils/swagger')
-swaggerInstall(app)
+const expressSwagger = require('express-swagger-generator')(app)
+const options = require('./utils/swagger') //配置信息
+expressSwagger(options)
 
 // 统一响应机制
 const UnifiedResponse = require('./utils/utils.resextra')
@@ -44,7 +46,7 @@ app.use(function (req, res, next) {
 })
 app.listen(process.env.DEV_PORT, () => {
     console.log(chalk.bold.green(`项目启动成功: ${process.env.DEV_URL}:${process.env.DEV_PORT}`));
-    console.log(chalk.bold.green(`接口文档地址: ${process.env.DEV_URL}:${process.env.DEV_PORT}/apiDoc/#/`));
+    console.log(chalk.bold.green(`接口文档地址: ${process.env.DEV_URL}:${process.env.DEV_PORT}/swagger`));
 
 })
 

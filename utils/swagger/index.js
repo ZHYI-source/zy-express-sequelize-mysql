@@ -1,35 +1,35 @@
-const path = require('path')
-const express = require('express')
-const swaggerUI = require('swagger-ui-express')
-const swaggerDoc = require('swagger-jsdoc')
-//配置swagger-jsdoc
+/**
+ *@author ZY
+ *@date 2022/4/9 21:00
+ *@Description: 配置swagger
+ */
+
 const options = {
-    definition: {
-        openapi: '3.0.0',
+    swaggerDefinition: {
         info: {
-            title: '代码生成器',
+            title: 'zy-express-sequelize-mysql',
             version: '1.0.0',
-            description: `ZY的接口api`
+            description: `书中枫叶’接口api`
+        },
+        host: `${process.env.DEV_URL}:${process.env.DEV_PORT}`,
+        basePath: '/',
+        produces: ['application/json', 'application/xml'],
+        schemes: ['http', 'https'],
+        securityDefinitions: {
+            JWT: {
+                type: 'apiKey',
+                in: 'header',
+                name: 'Authorization',
+                description: ''
+            }
         }
     },
-    // 去哪个路由下收集 swagger 注释
-    // apis: [path.join(__dirname,'../../routes/api/private/*.js')]
-    apis: [path.join(__dirname,'../../routes/api/openapi.yaml')]
+    route: {
+        url: '/swagger',
+        docs: '/swagger.json' //swagger文件 api
+    },
+    basedir: __dirname, //app absolute path
+    files: ['../../routes/api/private/*.js'] //在那个文件夹下面收集注释
 }
 
-var swaggerJson = function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
-    res.send(swaggerSpec);
-}
-const swaggerSpec = swaggerDoc(options)
-
-var swaggerInstall = function(app) {
-    if (!app){
-        app = express()
-    }
-    // 开放相关接口，
-    app.get('/swagger.json', swaggerJson);
-    // 使用 swaggerSpec 生成 swagger 文档页面，并开放在指定路由
-    app.use('/apiDoc', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
-}
-module.exports = swaggerInstall
+module.exports = options

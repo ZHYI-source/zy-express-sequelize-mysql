@@ -25,24 +25,28 @@ servers:
 
 
 paths:
-  /httpDate/home1:
+  /api/public/v1/captcha :
     get:
       tags:
-        - httpDate
-      summary: 获取所有的用户
-      description: 获取所有的用户
+        - 验证码
+      summary: 获取验证码
+      description: 获取验证码
       operationId: createUser
-      # requestBody:
-      #   description: Created user object
-      #   content:
-      #     '*/*':
-      #       schema:
-      #         $ref: '#/components/schemas/User'
-      #   required: true
       responses:
-        default:
-          description: successful operation
-          content: {}
+        '200':
+          description: 请求成功.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: integer
+                    format: int64
+                    example: 4
+                  name:
+                    type: string
+                    example: Jessica Smith
       security:
         - token:
             - write:httpDate
