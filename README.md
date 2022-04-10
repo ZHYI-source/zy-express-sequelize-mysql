@@ -1,17 +1,13 @@
 
+ 
+# 书中枫叶’Express-Mysql-Server
 
-# ProjectName
-
-ProjectName and Description
+`Express-Mysql-Server` 项目是一套 集成 `express` `sequelize` `swagger-ui` 框架 api 模板，
 
 <!-- PROJECT SHIELDS -->
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![star](https://gitee.com/Z568_568/zy-express-sequelize-mysql/badge/star.svg?theme=dark)](https://gitee.com/Z568_568/zy-express-sequelize-mysql/stargazers)
+[![fork](https://gitee.com/Z568_568/zy-express-sequelize-mysql/badge/fork.svg?theme=dark)](https://gitee.com/Z568_568/zy-express-sequelize-mysql/members)
 
 <!-- PROJECT LOGO -->
 <br />
