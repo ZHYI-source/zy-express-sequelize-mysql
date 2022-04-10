@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://gitee.com/Z568_568/zy-express-sequelize-mysql.git">
-    <img src="https://gitee.com/Z568_568/zy-express-sequelize-mysql/widgets/widget_3.svg" alt="Logo" width="80" height="80">
+    <img src="https://gitee.com/Z568_568/zy-express-sequelize-mysql/widgets/widget_3.svg" alt="Logo" width="130" height="95">
   </a>
 
 
