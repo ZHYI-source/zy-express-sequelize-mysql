@@ -18,9 +18,9 @@
   </a>
 
 
-<h3 align="center">"完美的"README模板</h3>
+<h3 align="center">"Express-Mysql-Server"</h3>
   <p align="center">
-    一个"完美的"README模板去快速开始你的项目！
+    一个 "开箱即用" node接口服务模板去快速开始你的项目！
     <br />
     <a href="https://github.com/shaojintian/Best_README_template"><strong>探索本项目的文档 »</strong></a>
     <br />
@@ -36,7 +36,7 @@
 </p>
 
 
-本篇README.md面向开发者
+本项目面向学习node接口服务开发者
 
 ## 目录
 
