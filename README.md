@@ -13,7 +13,7 @@
 <br />
 
 <p align="center">
-  <a href="https://github.com/shaojintian/Best_README_template/">
+  <a href="https://gitee.com/Z568_568/zy-express-sequelize-mysql.git">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -180,7 +180,7 @@ filetree
 │  ├── ...
 ├── /controllers/             控制层 处理具体业务
 │  ├── ...
-└──/config/                  数据库等其他配置文件
+└──/config/                   数据库等其他配置文件
 │  ├── ...
 └──└──
  
