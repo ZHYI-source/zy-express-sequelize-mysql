@@ -46,7 +46,7 @@ app.use(UnifiedResponse)
 
 const admin_passport = require('./utils/utils.permission')
 
-// 设置 passport 验证路径 ('/api/private/v1/' 开头的都需要进行token)
+// 设置 passport 验证路径 ('/api/private/' 开头的都需要进行token)
 app.use('/api/private/*', admin_passport.tokenAuth)
 
 //token 有效性中间件

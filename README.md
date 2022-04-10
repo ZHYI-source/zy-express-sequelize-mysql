@@ -51,31 +51,92 @@
     - [如何参与开源项目](#如何参与开源项目)
 - [版本控制](#版本控制)
 - [作者](#作者)
-- [鸣谢](#鸣谢)
-
-### 上手指南
-
-请将所有链接中的“shaojintian/Best_README_template”改为“your_github_name/your_repository”
-
 
 
 ###### 开发前的配置要求
 
-1. xxxxx x.x.x
-2. xxxxx x.x.x
+```shell
+1. node.js 环境
+2. Express.js 框架
+3. IDEA / WebStorm / VS Code 开发工具
+4. Navicat 可视化数据库
+5. apiPost / postman 接口调试工具
+```
 
 ###### **安装步骤**
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. 克隆本项目代码
 
 ```sh
-git clone https://github.com/shaojintian/Best_README_template.git
+git clone https://gitee.com/Z568_568/zy-express-sequelize-mysql.git
+```
+2. 安装依赖
+
+```sh
+npm install
+```
+3.打开 `Navicat软件` 创建数据库  `mk_db`
+
+4.配置数据库信息 `文件 config/db.config.js`
+
+```sh
+HOST: "localhost",
+    USER: "root",
+    PASSWORD: "root",
+    DB: "mk_db",
+    dialect: "mysql",
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    },
+ ```
+5. 配置文件上传地址信息 `文件 config/upload.config.js`
+
+```sh
+module.exports = {
+    "baseURL":"http://localhost:3001",
+}
+```
+6.启动项目
+`````sh
+nodemon app.js (热加载)  or  node app.js
+`````
+7.启动成功示例
+```shell
+项目启动成功: http://localhost:3001
+接口文档地址: http://localhost:3001/swagger
+```
+8.测试接口: 打开`postman / apiPost 软件` 输入`获取验证码接口地址`
+<br/>
+<br/>
+**注意：**测试接口中 `'/api/private/' 开头的接口地址都需要进行token验证，在请求头 header中加入 authorization 并携带 token`
+<br/>
+<br/>
+获取 token 需要在 登录接口进行 登录后 返回 token
+
+```shell
+ GET http://localhost:3001/api/public/v1/captcha 
+```
+```shell
+响应结果是 Svg 格式
+**********************
+{
+	"data": {
+		"codeSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\"....></svg>",
+		"codeText": "06PEo3AZTK41g7oA7paQAg==",
+		"key": 1649573015653
+	},
+	"meta": {
+		"msg": "获取验证码成功",
+		"status": 200
+	}
+}
 ```
 
-### 文件目录说明
 
-eg:
+### 文件目录说明
 
 ```
 filetree 
