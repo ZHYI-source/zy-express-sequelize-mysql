@@ -111,7 +111,7 @@ nodemon app.js (热加载)  or  node app.js
 8.测试接口: 打开`postman / apiPost 软件` 输入`获取验证码接口地址`
 <br/>
 <br/>
-**注意：**测试接口中 `'/api/private/' 开头的接口地址都需要进行token验证，在请求头 header中加入 authorization 并携带 token`
+**注意：** 测试接口中 `'/api/private/' 开头的接口地址都需要进行token验证，在请求头 header中加入 authorization 并携带 token`
 <br/>
 <br/>
 获取 token 需要在 登录接口进行 登录后 返回 token
