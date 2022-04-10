@@ -13,5 +13,19 @@ module.exports = function(req, res, next){
 			});
 		}
 	};
+	res.sendResultAto = function(data,code,message) {
+		var fmt = req.query.fmt ? req.query.fmt : "rest";
+		if(fmt == "rest") {
+			res.json(
+				{
+					data,
+					"meta" : {
+						"msg" 		: message,
+						"status" 	: code
+					}
+				});
+		}
+	};
 	next();
 }
+

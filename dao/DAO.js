@@ -16,9 +16,9 @@ function resExtra(data, code = 200, message = '操作成功！') {
 function queryConditions(conditions) {
     return {
         where: utilsTools.deleteNullObj(conditions.params),
-        limit: parseInt(conditions.limit),
-        offset: conditions.limit * (conditions.offset - 1),
-        order: [[conditions.sort.prop || 'createdAt', conditions.sort.order || 'asc']] //默认按插入时间进行升序
+        limit: parseInt(conditions.limit) || 20,
+        offset: conditions.limit * (conditions.offset - 1) || 0,
+        order: [[conditions.sort?conditions.sort.prop : 'createdAt', conditions.sort?conditions.sort.order : 'asc']] //默认按插入时间进行升序
     }
 }
 
