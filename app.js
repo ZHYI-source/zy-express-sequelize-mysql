@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const chalk = require('chalk'); // https://www.npmjs.com/package/chalk
+const logger = require("./utils/utils.logger").logger();
+
 // 路由加载
 const mount = require('mount-routes')
 const app = express()
@@ -49,7 +51,9 @@ app.use('/api/private/*', admin_passport.tokenAuth)
 
 //token 有效性中间件
 app.use(function (err, req, res, next) {
+    const pm =req.body
     if (err.name === 'UnauthorizedError') {
+        logger.error(`${req.method} ${req.baseUrl + req.path} *** 响应：${JSON.stringify({data:null, code:err.status || 401, message:err.message || 'token错误'})}`);
         res.send({data:null, code:err.status || 401, message:err.message || 'token错误'})
     }
 })

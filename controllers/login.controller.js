@@ -4,7 +4,6 @@ const {aes} = require('../utils/utils.crypto')
 const Users = db.users;
 const jwt = require('jsonwebtoken')
 
-
 exports.login=function (pm, cb) {
     //登录逻辑
     Users.findOne({where:{username:pm.username,}}).then(data => {
