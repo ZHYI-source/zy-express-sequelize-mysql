@@ -1,26 +1,22 @@
-/**
- * @author zhouyi
- * @date 2022/4/10 0:05
- * @dec:权限
- */
 const expressJwt = require('express-jwt')
-const jwt = require('jsonwebtoken')
-
-exports.d = function (app, level) {
-    expressJwt({
-        secret: 'secret12345'  // 签名的密钥 或 PublicKey
-    }).unless({
-        path: ['/login', '/signup']  // 指定路径不经过 Token 解析
-    })
-};
-// 注意默认情况 Token 必须以 Bearer+空格 开头
-exports.token = 'Bearer ' + jwt.sign(
-    {
-        _id: '123',
-        admin: true
-    },
-    'secret12345',
-    {
-        expiresIn: 3600 * 24 * 3
+/**
+ * token验证函数
+ *
+ * @param  {[type]}   req  请求对象
+ * @param  {[type]}   res  响应对象
+ * @param  {Function} next 传递事件函数
+ */
+exports.tokenAuth = expressJwt({
+    secret: process.env["SIGN_KEY"],
+    algorithms: ['HS256'],
+    credentialsRequired: true, //对没有携带token的 接口也抛出错误
+    getToken: function fromHeaderOrQuerystring(req) {
+        if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+            return req.headers.authorization.split(' ')[1]
+        } else if (req.query && req.query.token) {
+            return req.query.token
+        }
+        return null
     }
-)
+})
+

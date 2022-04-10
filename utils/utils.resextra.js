@@ -13,6 +13,7 @@ module.exports = function(req, res, next){
 			});
 		}
 	};
+	//自定义格式
 	res.sendResultAto = function(data,code,message) {
 		var fmt = req.query.fmt ? req.query.fmt : "rest";
 		if(fmt == "rest") {

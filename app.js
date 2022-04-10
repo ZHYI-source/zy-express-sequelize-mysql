@@ -16,6 +16,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 const db = require("./models");
 
 db.sequelize.sync();
+
+
 // 设置跨域和相应数据格式
 app.all('/api/*', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*')
@@ -40,15 +42,22 @@ expressSwagger(options)
 const UnifiedResponse = require('./utils/utils.resextra')
 app.use(UnifiedResponse)
 
-// 带路径的用法并且可以打印出路有表  true 代表展示路由表在打印台
-mount(app, path.join(process.cwd(), '/routes'), true)
+const admin_passport = require('./utils/utils.permission')
+
+// 设置 passport 验证路径 ('/api/private/v1/' 开头的都需要进行token)
+app.use('/api/private/*', admin_passport.tokenAuth)
 
 //token 有效性中间件
 app.use(function (err, req, res, next) {
     if (err.name === 'UnauthorizedError') {
-        res.sendResult({data:null, code:401, message:'token已失效'})
+        res.send({data:null, code:err.status || 401, message:err.message || 'token错误'})
     }
 })
+
+// 带路径的用法并且可以打印出路有表  true 代表展示路由表在打印台
+mount(app, path.join(process.cwd(), '/routes'), true)
+
+
 
 // 处理无响应 如果没有路径处理就返回 Not Found
 app.use(function (req, res, next) {
