@@ -21,22 +21,31 @@
 <h3 align="center">"Express-Mysql-Server"</h3>
   <p align="center">
     一个 "开箱即用" node接口服务模板去快速开始你的项目！
-    <br />
-    <a href="https://github.com/shaojintian/Best_README_template"><strong>探索本项目的文档 »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/shaojintian/Best_README_template">查看Demo</a>
-    ·
-    <a href="https://github.com/shaojintian/Best_README_template/issues">报告Bug</a>
-    ·
-    <a href="https://github.com/shaojintian/Best_README_template/issues">提出新特性</a>
+
+[comment]: <> (    <br />)
+
+[comment]: <> (    <a href="https://github.com/shaojintian/Best_README_template"><strong>探索本项目的文档 »</strong></a>)
+
+[comment]: <> (    <br />)
+
+[comment]: <> (    <br />)
+
+[comment]: <> (    <a href="https://github.com/shaojintian/Best_README_template">查看Demo</a>)
+
+[comment]: <> (    ·)
+
+[comment]: <> (    <a href="https://github.com/shaojintian/Best_README_template/issues">报告Bug</a>)
+
+[comment]: <> (    ·)
+
+[comment]: <> (    <a href="https://github.com/shaojintian/Best_README_template/issues">提出新特性</a>)
   </p>
 
 
 </p>
 
 
-本项目面向学习node接口服务开发者
+ 
 ***
 ## 目录
 
@@ -44,11 +53,8 @@
     - [开发前的配置要求](#开发前的配置要求)
     - [安装步骤](#安装步骤)
 - [文件目录说明](#文件目录说明)
-- [开发的架构](#开发的架构)
 - [部署](#部署)
 - [使用到的框架](#使用到的框架)
-- [贡献者](#贡献者)
-    - [如何参与开源项目](#如何参与开源项目)
 - [版本控制](#版本控制)
 - [作者](#作者)
 
@@ -145,30 +151,41 @@ eg:获取验证码接口 （无需token验证）
 
 ```
 filetree 
-├── ARCHITECTURE.md
-├── LICENSE.txt
+
 ├── README.md
-├── /account/
-├── /bbs/
-├── /docs/
-│  ├── /rules/
-│  │  ├── backend.txt
-│  │  └── frontend.txt
-├── manage.py
-├── /oa/
-├── /static/
-├── /templates/
-├── useless.md
-└── /util/
+├── cheese.log                日志记录文件
+├── app.js                    入口文件
+├── .env                      环境配置文件
+├── /utils/                   工具方法文件夹
+│  ├── /swagger/              swagger配置文件夹
+│  │  ├── utils.resextra.js   统一响应格式
+│  │  └── utils.loger.js      日志记录配置文件
+│  │  └── ...
+├── /uploads_files/           上传图片存放的文件夹
+│  │  │ 
+├── /routes/                  接口路由文件夹
+│  ├── /api/                  api文件夹
+│  │  ├── /private/           存放需要权限token的接口文件夹
+│  │  │  ├── ...    
+│  │  │  │ 
+│  │  └── /public/            存放无需token校验的接口
+│  │  │  ├── ...
+│  │  │  │ 
+├── /models/                  数据模型和定义
+│  ├── index.js               sequelize 实例 和 模型主入口
+│  ├── ...
+│  │ 
+├── /dao/                     数据库查询方法
+│  ├── DAO                    公共数据库查询方法
+│  ├── ...
+├── /controllers/             控制层 处理具体业务
+│  ├── ...
+└──/config/                  数据库等其他配置文件
+│  ├── ...
+└──└──
+ 
 
 ```
-
-
-
-
-
-### 开发的架构
-
 
 ### 部署
 
@@ -179,10 +196,6 @@ filetree
 - [Express.js](https://expressjs.com/zh-cn/)
 - [Sequelize](https://www.sequelize.com.cn/)
 - [Swagger-ui](http://www.npmdoc.org/swagger-node-expresszhongwenwendangswagger-node-express-jszhongwenjiaochengjiexi.html)
-
-### 贡献者
-
-
 
 ### 版本控制
 
