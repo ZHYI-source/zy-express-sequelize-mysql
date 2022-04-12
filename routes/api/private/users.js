@@ -20,6 +20,7 @@ router.post("/create", Users.create);
  * @route POST /api/private/users/delete
  * @group 用户管理 - delete of users
  * @param {number} id - 请输入用户ID
+ * @param {string} authorization - 请输入token
  * @returns {object} 200 - An array of user info
  * @returns {object} 500 - 请求失败
  * @returns {Error}  default - Unexpected error
