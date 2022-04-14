@@ -18,10 +18,16 @@ exports.create = (req, res) => {
         nickName: req.body.nickName,
         verificationCode: req.body.verificationCode,
     };
-    DAO.create(Users, user, data => {
-        logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(pm)}; 响应：${JSON.stringify(data)}`);
-        res.sendResult(data)
+
+    Users.findOne({where:{'username':pm.username}}).then(singleUser=>{
+        if (singleUser&&singleUser.id)  return  res.sendResultAto(null,605,'用户名已存在！')
+        DAO.create(Users, user, data => {
+            logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(pm)}; 响应：${JSON.stringify(data)}`);
+            res.sendResult(data)
+        })
     })
+
+
 };
 
 // Retrieve all user from the database.

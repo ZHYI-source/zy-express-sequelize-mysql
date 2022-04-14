@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken')
 
 exports.login=function (pm, cb) {
     //登录逻辑
-    Users.findOne({where:{username:pm.username,}}).then(data => {
-        logger.debug('login => username:%s,password:%s', pm.username, pm.password);
+ Users.findOne({where:{username:pm.username,}}).then(data => {
+        logger.debug('login => username:%s,password:%s', pm.username, aes.en(pm.password));
         if (aes.en(pm.password) === data.password){
             // 生成token
             let token = 'Bearer ' + jwt.sign(
@@ -28,6 +28,6 @@ exports.login=function (pm, cb) {
         cb(null,'密码错误！')
     }).catch(err => {
         logger.error(JSON.stringify(err))
-        cb(null,err)
+        cb(null,'用户不存在！请联系管理员添加')
     })
 }

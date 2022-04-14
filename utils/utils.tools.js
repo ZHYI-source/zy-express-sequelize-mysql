@@ -20,12 +20,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 const utilsTools = {
     //生成永不重复的id
     createRandomId: () => {
-        return md5(
-            (Math.random() * 10000000).toString(16).substr(0, 4)
-            + '-' +
-            (new Date()).getTime()
-            + '-' +
-            Math.random().toString().substr(2, 5)
+        return md5((new Date()).getTime() + '-' + Math.random().toString().substr(2, 5)
         ).toString()
     },
     //获取实时时间

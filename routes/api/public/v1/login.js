@@ -14,7 +14,7 @@ const Login = require("../../../../controllers/login.controller");
  */
 router.post("/", function (req,res){
     const pm = req.body;
-    // 请求验证
+    // 请求验证+
     if (!pm.username)  return res.sendResult({data: '', code: 500, message: "用户名不能为空！"})
 
     if (!pm.password)  return res.sendResult({data: '', code: 500, message: "密码不能为空！"})
