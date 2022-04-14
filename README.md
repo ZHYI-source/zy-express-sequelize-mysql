@@ -122,7 +122,7 @@ nodemon app.js (热加载)  or  node app.js
 **注意：** 测试接口中 `'/api/private/' 开头的接口地址都需要进行token验证，在请求头 header中加入 authorization 并携带 token`
 <br/>
 <br/>
-获取 token 需要在 登录接口进行`admin/123456` 登录后 返回 token
+获取 token 需要在 登录接口进行登录后`用户名：admin  密码：123456` 返回 token
 
 ```shell
 eg:获取验证码接口 （无需token验证）
