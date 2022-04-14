@@ -83,7 +83,7 @@ git clone https://gitee.com/Z568_568/zy-express-sequelize-mysql.git
 ```sh
 npm install
 ```
-3.打开 `Navicat软件` 创建数据库  `mk_db`
+3.打开 `Navicat软件` 创建数据库  `mk_db`,运行`sql文件`
 
 4.配置数据库信息 `文件 config/db.config.js`
 
@@ -122,7 +122,7 @@ nodemon app.js (热加载)  or  node app.js
 **注意：** 测试接口中 `'/api/private/' 开头的接口地址都需要进行token验证，在请求头 header中加入 authorization 并携带 token`
 <br/>
 <br/>
-获取 token 需要在 登录接口进行 登录后 返回 token
+获取 token 需要在 登录接口进行`admin/123456` 登录后 返回 token
 
 ```shell
 eg:获取验证码接口 （无需token验证）
