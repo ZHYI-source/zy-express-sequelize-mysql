@@ -61,8 +61,6 @@ app.use(function (err, req, res, next) {
 // 带路径的用法并且可以打印出路有表  true 代表展示路由表在打印台
 mount(app, path.join(process.cwd(), '/routes'), true)
 
-
-
 // 处理无响应 如果没有路径处理就返回 Not Found
 app.use(function (req, res, next) {
     res.sendResult({data:null, code:404, message:'Not Found'})
@@ -70,7 +68,6 @@ app.use(function (req, res, next) {
 app.listen(process.env.DEV_PORT, () => {
     console.log(chalk.bold.green(`项目启动成功: ${process.env.DEV_URL}:${process.env.DEV_PORT}`));
     console.log(chalk.bold.green(`接口文档地址: ${process.env.DEV_URL}:${process.env.DEV_PORT}/swagger`));
-
 })
 
 module.exports = app
